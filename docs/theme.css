@@ -1,0 +1,51 @@
+/* Shared screen theme for HTML documentation. Printed pages keep their existing
+   paper-friendly styles; the ocean application does not import this sheet. */
+@media screen {
+  :root {
+    color-scheme: dark;
+    --paper: #0b1720;
+    --ink: #e0eaf0;
+    --muted: #afc2cc;
+    --line: #354a56;
+    --teal: #8fd7cb;
+    --accent: #8fd7cb;
+    --soft: #142732;
+    --night: #091e2a;
+  }
+  .topbar { background: #0b1720f5; color: var(--ink); }
+  .skip { background: var(--soft); color: var(--ink); }
+  .button, button, .play, .wave-lab button, .lab-actions button:first-child {
+    background: #18423f;
+    color: #e4f5f0 !important;
+    border-color: #659b91;
+  }
+  .button:hover, button:hover, .play:hover,
+  .lab-actions button:hover, .lab-actions button:first-child:hover { background: #255851; }
+  .lab-actions button { background: #162e39; color: var(--ink); }
+  .lab-actions button:disabled { opacity: 1; background: #182832; color: #afc2cc !important; border-color: #46606b; }
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  summary:focus-visible, [tabindex]:focus-visible { outline-color: #eab676; }
+  .hero-image img { box-shadow: 8px 10px 0 #19303b; }
+  article > p:first-child, blockquote, .deep { background: var(--soft); border-left-color: #6eb0a4; }
+  blockquote { color: #c2d3da; }
+  h2 { border-top-color: var(--line); }
+  code { background: #203540; color: #dfebf1; }
+  pre { background: var(--night); color: #e5f1ee; }
+  pre code { background: none; color: inherit; }
+  .code-example figcaption, .teaching-code > span, th { background: #1b333f; color: var(--ink); }
+  .lab, .wave-lab, .angle-lab, .end-cta, .closing { background: #142c36; border-color: #3f5d68; }
+  .wave-lab p, .wave-lab .lab-note, .lab .aside-note, .angle-lab .aside-note { color: var(--muted); }
+  .wave-lab input { accent-color: var(--teal); }
+  .mesh-figure svg { color: #91c9d0; }
+  .component { stroke: #91bbc0; opacity: .85; }
+  .wave-lab text { fill: #b9cfd8; }
+  .line-key { background: #98ead8; }
+  .arrow-key { background: #ffbc8d; }
+  .reflection-bar { background: #213f53; outline: 1px solid #557281; }
+  footer { background: var(--paper); color: var(--muted); }
+  footer a { color: var(--teal); }
+  ::selection { background: #3a655e; color: #ffffff; }
+}
+@media screen and (max-width: 900px) {
+  .toc { background: var(--soft); }
+}

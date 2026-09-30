@@ -1,0 +1,203 @@
+{
+  "scope": "Local pre-commit production preview",
+  "baseRevision": "0c83c711e9dab52aa79e93bd5d957a937d993bca",
+  "testedSourceGitBlobIds": {
+    "docs/theme.css": "ed20bc6eb734f316beb95470ba5d3713004901ee",
+    "learn/template.html": "257d6a00dbaecf0542f3e0623f821503b4ec5676",
+    "learn/index.html": "4aeef3795194fd8b9ddd6320f2fc9967fde6f4d8",
+    "journey/index.html": "f742e9894288ce835d02ed6328c062a18274c51f",
+    "scripts/build-journey.mjs": "920730f773fd3d840f5a4c619593adb1db51fdb3"
+  },
+  "theme": {
+    "checkedAt": "2026-09-30T20:54:51.321Z",
+    "root": "http://127.0.0.1:4174/",
+    "provenance": "Headless desktop Chrome; emulated viewports, light OS preference and reduced motion. Solid-surface contrast audit, not a complete accessibility certification.",
+    "passed": 26,
+    "failed": [],
+    "reports": [
+      {
+        "doc": "learn",
+        "measured": 274,
+        "minimumContrast": 7.91,
+        "failures": [],
+        "brightSurfaces": [],
+        "imageText": 0,
+        "paper": "#0b1720",
+        "ink": "#e0eaf0",
+        "accent": "#8fd7cb"
+      },
+      {
+        "doc": "journey",
+        "measured": 268,
+        "minimumContrast": 7.91,
+        "failures": [],
+        "brightSurfaces": [],
+        "imageText": 4,
+        "paper": "#0b1720",
+        "ink": "#e0eaf0",
+        "accent": "#8fd7cb"
+      }
+    ],
+    "checks": [
+      {
+        "name": "learn: HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn: dark default overrides light OS preference",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn: text meets AA contrast on solid surfaces",
+        "passed": true,
+        "detail": {
+          "measured": 274,
+          "minimumContrast": 7.91,
+          "failures": [],
+          "brightSurfaces": [],
+          "imageText": 0,
+          "paper": "#0b1720",
+          "ink": "#e0eaf0",
+          "accent": "#8fd7cb"
+        }
+      },
+      {
+        "name": "learn: text surfaces stay dark",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Guide lesson and reduced motion remain usable",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Reflection lesson still responds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn 390x844: no page overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn 390x844: navigation panel stays dark",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn 320x568: no page overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn 320x568: navigation panel stays dark",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn 844x390: no page overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "learn 844x390: navigation panel stays dark",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey: HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey: dark default overrides light OS preference",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey: text meets AA contrast on solid surfaces",
+        "passed": true,
+        "detail": {
+          "measured": 268,
+          "minimumContrast": 7.91,
+          "failures": [],
+          "brightSurfaces": [],
+          "imageText": 4,
+          "paper": "#0b1720",
+          "ink": "#e0eaf0",
+          "accent": "#8fd7cb"
+        }
+      },
+      {
+        "name": "journey: text surfaces stay dark",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "Journey wave lesson still responds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey 390x844: no page overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey 390x844: navigation panel stays dark",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey 320x568: no page overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey 320x568: navigation panel stays dark",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey 844x390: no page overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "journey 844x390: navigation panel stays dark",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Both documents share the same palette",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No browser errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "No failed requests",
+        "passed": true,
+        "detail": []
+      }
+    ]
+  },
+  "guideSummary": {
+    "checkedAt": "2026-09-30T20:56:46.455Z",
+    "passed": 44,
+    "failed": []
+  },
+  "gameSummary": {
+    "checkedAt": "2026-09-30T20:56:56.467Z",
+    "passed": 17,
+    "failed": []
+  },
+  "limits": "Solid-surface text contrast and emulated Chrome viewports; photo-backed heading reviewed visually. No physical-device or assistive-technology certification."
+}
