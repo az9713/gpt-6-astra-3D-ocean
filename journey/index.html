@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How GPT-6 Astra at xhigh built a procedural browser ocean: waves, optics, mistakes, performance evidence, and an interactive lesson.">
+<meta name="theme-color" content="#071c29"><link rel="icon" href="data:,"><title>Making an ocean — Ocean 3D development journey</title>
+<style>
+:root{color-scheme:light;--ink:#173340;--muted:#55707a;--paper:#f3f5f2;--line:#d5dfdb;--accent:#0b6b70}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.75 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,button:focus-visible,input:focus-visible,.table-scroll:focus-visible{outline:3px solid #cf9b3e;outline-offset:5px}.skip{position:fixed;top:-80px;left:20px;z-index:20;background:white;padding:12px}.skip:focus{top:10px}.topbar{position:sticky;top:0;z-index:5;background:#071c29f5;color:#edf4f0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px max(24px,calc((100vw - 1320px)/2));backdrop-filter:blur(14px)}.wordmark{letter-spacing:.25em;font-size:13px;font-weight:750}.topbar a{color:#edf4f0;text-decoration:none}.navlinks{display:flex;align-items:center;gap:24px;font-size:14px}.play{display:inline-block;background:#d3e9e0;color:#123844!important;padding:8px 18px;border-radius:4px;font-weight:700}.hero{position:relative;min-height:530px;background:linear-gradient(90deg,#061a29e8,#061a2938),url('../media/ocean-open-sea.png') center 56%/cover;color:#f6f7ed;padding:95px max(26px,calc((100vw - 1200px)/2)) 65px}.hero-inner{max-width:790px}.eyebrow{font-size:11px;letter-spacing:.22em;font-weight:750}.hero h1{font:clamp(54px,7vw,94px)/1.04 Georgia,serif;letter-spacing:-.045em;margin:22px 0}.hero p{font-size:19px;max-width:590px;color:#d6e5e7}.hero-meta{font-size:12px;letter-spacing:.08em;margin-top:28px}.layout{max-width:1260px;margin:auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:64px;padding:60px 30px 90px}.toc{position:sticky;top:94px;align-self:start;font-size:13px;line-height:1.6}.toc summary{font-size:11px;letter-spacing:.2em;font-weight:750;list-style:none;margin-bottom:15px}.toc a{display:block;padding:9px 0;border-bottom:1px solid var(--line);color:var(--muted);text-decoration:none}.toc a:hover{color:var(--accent)}article{min-width:0;max-width:840px}article>p:first-child{font-size:14px;background:#e7efea;border-left:3px solid #93b4a7;padding:18px 22px}h2{font:clamp(28px,3vw,39px)/1.2 Georgia,serif;letter-spacing:-.025em;margin:75px 0 26px;padding-top:24px;border-top:1px solid #b9cbc5}h3{font-size:21px;line-height:1.4;margin:34px 0 14px}p{margin:18px 0}strong{font-weight:700}blockquote{margin:26px 0;padding:3px 25px;border-left:3px solid #799f99;background:#e9eeea;color:#314e55}blockquote p{font-size:16px}img{display:block;width:100%;height:auto;border-radius:5px;margin:30px 0 12px;box-shadow:0 9px 35px #16364317}pre{font:13px/1.65 ui-monospace,Consolas,monospace;overflow:auto;padding:24px;background:#0d2734;color:#d8e9e6;border-radius:5px}code{font: .85em ui-monospace,Consolas,monospace;background:#e4ebe7;border-radius:3px;padding:2px 5px;overflow-wrap:anywhere}pre code{background:none;padding:0;color:inherit;overflow-wrap:normal}.table-scroll{overflow-x:auto;margin:25px 0;border:1px solid var(--line);border-radius:5px}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#e4ece7;font-size:12px}tr:last-child td{border-bottom:0}td:first-child{font-weight:600}footer{background:#09232e;color:#c2d7d7;padding:45px 30px;text-align:center;font-size:14px}footer a{color:#d3e9e0}.wave-lab{background:#0d2b3a;color:#dceae4;padding:28px;border-radius:8px;margin:30px 0}.wave-lab h3{color:white;margin-top:12px}.wave-lab p{font-size:14px;color:#a8c3c9}.wave-lab label{display:flex;justify-content:space-between;font-size:13px}.wave-lab input{width:100%;accent-color:#bddbcc;margin:16px 0 0}.wave-lab svg{width:100%;height:auto;display:block}.component{fill:none;stroke:#649299;stroke-width:1.5;opacity:.6}#combined-wave{fill:none;stroke:#e6ecd0;stroke-width:3}.wave-lab text{fill:#8dafb8;font:12px system-ui}.wave-lab button{background:#d3e9e0;color:#143a44;padding:10px 14px;border:0;border-radius:3px;font:600 13px system-ui;cursor:pointer}.lab-note{font-size:11px;color:#a8c3c9;display:inline-block;margin:8px}.end-cta{background:#dfebe4;padding:28px;margin-top:45px;border-radius:5px}.end-cta p{margin-top:0}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:20px;max-width:800px;padding-top:26px}.toc{position:static;background:#e8eeea;padding:16px 20px;border-radius:5px}.toc summary{cursor:pointer}.toc a{padding:6px 0}.hero{min-height:440px;padding-top:65px}.navlinks{gap:16px}h2{margin-top:50px}}@media(max-width:520px){body{font-size:16px}.topbar{padding:12px 16px}.wordmark{font-size:11px}.navlinks{font-size:12px;gap:12px}.navlinks .repo{display:none}.play{padding:7px 12px}.hero{min-height:400px;padding:55px 24px 40px}.hero p{font-size:17px}.layout{padding:24px 20px 50px}.wave-lab{padding:20px}th,td{padding:10px 12px;min-width:115px}h2{font-size:29px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.topbar,.toc,.wave-lab,.end-cta{display:none}.layout{display:block;max-width:none}.hero{min-height:auto;padding:20px;background:#fff;color:#000}.hero p{color:#333}body{background:#fff;font-size:11pt}h2{break-after:avoid}img{max-height:340px;object-fit:contain}a{color:#000}}
+</style></head><body>
+<a class="skip" href="#article">Skip to the story</a>
+<nav class="topbar" aria-label="Main navigation"><a class="wordmark" href="../">PELAGIC / OCEAN 3D</a><div class="navlinks"><a class="repo" href="https://github.com/az9713/gpt-6-astra-3D-ocean">Source code ↗</a><a class="play" href="../">Play the ocean ↗</a></div></nav>
+<header class="hero"><div class="hero-inner"><div class="eyebrow">DEVELOPMENT JOURNEY · FIELD NOTES 01</div><h1>Making an ocean.<br>Learning to see it.</h1><p>Waves are equations. Believability is agreement between motion, light, scale, and the mistakes you are willing to fix.</p><div class="hero-meta">GPT-6 ASTRA · XHIGH EFFORT · 30 SEPTEMBER 2026</div></div></header>
+<div class="layout"><aside class="toc"><details open><summary>IN THIS JOURNEY</summary><nav aria-label="Table of contents"><a href="#section-1">1. The brief — make an ocean, then distrust the first picture</a><a href="#section-2">2. Starting from a prompt — and later reconnecting to a real desktop</a><a href="#section-3">3. Design decisions — spend the budget on the horizon</a><a href="#section-4">4. The core problem — making independent tricks agree</a><a href="#section-5">5. Tools, agents, and human decisions</a><a href="#section-6">6. What went wrong — and what each fix teaches</a><a href="#section-7">7. Verification — separate observation from inference</a><a href="#section-8">8. Where things stand — a playable lesson, with visible limits</a></nav></details></aside><article id="article"><p><strong>Date:</strong> 2026-09-30<br><strong>Deliverable:</strong> <a href="https://az9713.github.io/gpt-6-astra-3D-ocean/">Play the ocean</a> · <a href="https://az9713.github.io/gpt-6-astra-3D-ocean/journey/">Live learning page</a><br><strong>Model and effort:</strong> GPT-6 Astra, xhigh, for implementation and the independent automated review.<br><strong>Final render:</strong> <a href="public/media/ocean-open-sea.png">Open sea screenshot</a></p>
+<p>This is a record of a real build, including the parts that failed. Earlier implementation details are reconstructed from the surviving source, screenshots, interaction results, performance capture, independent review, and session handoff. The later visible-browser troubleshooting and publication work were recorded directly. Some early tool transcripts are unavailable; missing exact error strings, timings, and costs are not invented.</p>
+<h2 id="section-1">1. The brief — make an ocean, then distrust the first picture</h2>
+<p>The starting folder contained a prompt and a link to <a href="https://www.youtube.com/watch?v=T-E7rmD6rh4&amp;t=697s">Matt Berman&#39;s video at 11:37</a>. The user first asked to read the prompt without executing it, then authorized a realistic implementation using GPT-6 Astra at xhigh. A Sonnet 5.5 screenshot supplied a visual target. Later requests added progress images, visible desktop verification, this journey, and public GitHub Pages deployment.</p>
+<p><strong>The original brief, verbatim:</strong></p>
+<blockquote>
+<p>Build a real-time 3D ocean in the browser, and keep improving it until still frames could pass for photos of the open sea. Use a real wave simulation with sea states from glassy calm to a storm, whitecaps where waves break, a realistic sky, clouds that shadow the water, times of day through a moonlit night, and rain and lightning. Add a sailing yacht with a wake, and an underwater view with light shafts and fish. Start with a slow cinematic tour, then let me fly around freely, and keep the controls compact and monochrome. Watch out for foam that looks like cotton balls, milky underwater colour, and the splash ripples blowing up when frame times are uneven. Check your work with screenshots and a tough outside reviewer until nothing cheap is left to fix, then tell me plainly how it went.</p>
+</blockquote>
+<p>The <a href="https://github.com/az9713/gpt-6-astra-3D-ocean/blob/main/README.txt">original README.txt</a> stays unchanged. Its SHA-256 is <code>EADAEBCFBA9E843EB86B7ADD302B25C375D7190D81FA8C33A3F8F59FFA2F644F</code>. The supplied prompt is the primary specification; the video is the attributed inspiration, not evidence that every sentence was independently transcribed from it. The video fetch was throttled during publication, so no claim rests on a fresh full viewing.</p>
+<p>The ambition was photographic realism. The delivered scene is a procedural approximation that remains visibly CGI. That distinction matters: a working control panel and an attractive screenshot do not prove the hardest part of the brief. There is no supported claim that this beats Sonnet in every respect, and a still reference cannot establish its animation quality or frame rate.</p>
+<p>The opening composition favored a low horizon, readable large swells, dark troughs, and a yacht for scale. The controls remain compact and monochrome. The reference analysis called out dense ripples, shallow-looking turquoise, broad white patches, and a large panel. Those observations guided the design; they were not a numerical benchmark.</p>
+<h2 id="section-2">2. Starting from a prompt — and later reconnecting to a real desktop</h2>
+<p>The local environment was Windows with Node.js 22.22.0 and npm 9.9.4. The implementation used Three.js 0.180.0 and Vite 7.1.7. There was no existing application or Git history in the supplied project folder. The original prompt and unrelated local files had to survive. Building, publishing, and browser control each became authorized at different points; reading a prompt was not treated as permission to run it.</p>
+<p>A previously reported Playwright MCP Bridge timeout made the existing Chrome bridge unreliable. The useful alternative was an isolated Playwright CLI Chrome session. It could render the app, click controls, capture actual PNGs, and report console errors without that bridge. That solved browser automation, but it did not prove that the user could see a normal browser window.</p>
+<p>The supplied reference attachment could not be materialized on the Windows executor: the transfer helper depended on <code>os.setxattr</code>, which Windows Python did not provide. A bounded retry did not solve it. Another participant&#39;s actual-pixel analysis was available and used explicitly as secondary evidence. The implementation did not claim to have personally opened unavailable reference bytes. Screenshot uploads later succeeded through the supported direct creation route; transfer metadata limitations were separate from whether the app rendered.</p>
+<p>After the user reported that the local Play link showed nothing, a port probe returned HTTP 200 and the original server was still listening on <code>127.0.0.1:4173</code>. Restarting the server would have addressed the wrong problem. A new normal Chrome window showed the ocean and yacht. The exact cause of the ChatGPT link-opening failure was not established.</p>
+<p>Native Windows screen capture and mouse input then verified the Storm button in that visible window. Foreground restrictions initially produced the exact safety guard error <code>Ocean 3D is not foreground; no mouse input sent.</code> Windows display scaling also required DPI-aware capture and coordinates. Corrected focus handling and coordinates produced a visible storm screenshot. A screenshot taken after focus moved to another application was rejected as scene evidence.</p>
+<p>The Windows launcher had a separate, concrete weakness: a second invocation tried to start another strict-port server. It now checks for a healthy Ocean 3D response and opens that existing server. The corrected launcher returned exit code 0, and the listening process stayed the same.</p>
+<blockquote>
+<p>Probe the port before diagnosing a dead server. Capture the screen before claiming the user can see it.</p>
+</blockquote>
+<h2 id="section-3">3. Design decisions — spend the budget on the horizon</h2>
+<p>The application uses browser JavaScript, WebGL 2, procedural geometry, and custom GLSL shaders. A shader is a small program that runs on the GPU for vertices or pixels. No external ocean texture pack, cloud model, yacht download, or runtime AI service is required. Procedural construction keeps the initial experience self-contained and avoids asset-loading dependencies; it also exposes the limitations of simple shapes and noise functions.</p>
+<p>An analytic Gerstner wave field was chosen instead of a full fluid solver. Each wave has a wavelength, direction, amplitude, steepness, frequency, and phase. The design offers direct art control and bounded evaluation cost. A spectral FFT ocean could represent richer statistical sea states, but it was not implemented. CFD would solve a substantially different, more expensive problem. Here, “simulation” means a moving, physically inspired field, not validated conservation of fluid mass and momentum.</p>
+<p>Large displacement and small surface detail are separate. Ten waves shape the silhouette. Six finer waves perturb the shading normal, the direction used for lighting. A nonlinear grid with 380 × 380 segments concentrates geometry near the camera and stretches into the distance. The grid follows the camera; its wave phase uses world coordinates so the sea does not restart underneath it.</p>
+<p>The alternative of applying equally strong tiny ripples everywhere would make the horizon shimmer and erase the swell. Detail fades with viewing distance, and displaced waves also fade relative to their wavelength. This is a practical anti-aliasing measure, not a proof that all temporal aliasing is eliminated.</p>
+<p>The yacht gives the eye a familiar size cue. A separate reflection render target captures scene objects; the water evaluates sky reflection analytically. This is cheaper than tracing light rays through the whole scene. It cannot reproduce every occlusion, wave-surface reflection, or multiple scattering effect.</p>
+<p>The camera begins with a slow tour and hands off to free flight after about 72 seconds. Drift, Sail, Below, and Fly remain available immediately. No navigation mission, score, or boat steering game was added: the requested experience was observation and exploration. Synthesized audio is optional and starts only after a user gesture, as browsers require.</p>
+<p>The following pipeline is the practical architecture:</p>
+<pre><code class="language-text">Controls + camera + bounded frame delta
+                 |
+                 v
+        shared scene state / uniforms
+          /          |           \
+         v           v            v
+ GPU wave mesh   atmosphere    CPU wave sampler
+ + water shader  + shadows     + yacht buoyancy
+         \           |            /
+          \          v           /
+            Three.js render passes
+          reflection target -&gt; canvas
+</code></pre>
+<p><code>src/main.js</code> coordinates this loop. <code>src/ocean.js</code> owns both the GPU wave definitions and the CPU height sampler. <code>src/atmosphere.js</code> shares sky/cloud functions with the ocean shader. <code>src/yacht.js</code> builds and orients the boat. <code>src/objects.js</code> handles fish, shafts, particles, rain, and lightning. A shared parameter definition prevents independent CPU and GPU oceans from drifting apart.</p>
+<h2 id="section-4">4. The core problem — making independent tricks agree</h2>
+<h3>Waves: motion is more than raising a plane</h3>
+<p>For one wave, the phase is <code>θ = k(d · x) − ωt + φ</code>. Here <code>x</code> is position, <code>d</code> is direction, <code>t</code> is time, and <code>φ</code> is an offset. Wavenumber <code>k = 2π / wavelength</code> describes how rapidly the surface changes over distance. Deep-water angular frequency is <code>ω = √(gk)</code>, with <code>g = 9.81 m/s²</code>. The implementation uses this relation so long swells and short waves do not travel with one arbitrary speed.</p>
+<p>The surface height includes <code>A sin(θ)</code>. Gerstner displacement also shifts the horizontal position by a cosine term. That pulls the profile toward sharper crests instead of producing a row of equally rounded sine bumps. The renderer differentiates those displacements to find surface tangents, normals, and horizontal compression. Adding directional waves with different wavelengths makes an irregular field without sampling a fluid volume.</p>
+<p>Sea state <code>s</code>, from 0 to 1, scales wave amplitude by <code>0.028 + 2.65 × s^1.55</code>. The superlinear mapping makes high settings rise more dramatically while retaining a little motion at “glassy.” This is an artistic parameter, not a Beaufort calibration or a measured significant wave height.</p>
+<p>The live article includes a small cross-section lesson. It isolates the idea of superposition; it does not reproduce the renderer&#39;s full displacement or serve as a physical ocean predictor.</p>
+<section class="wave-lab" aria-labelledby="lab-title">
+<div class="eyebrow">TRY THE IDEA</div><h3 id="lab-title">One ocean. Several scales of motion.</h3>
+<p>Move the sea-state slider. The faint lines are individual waves; the bright line is their sum. This is a simplified 2D teaching sketch, not the 3D simulation.</p>
+<label for="lesson-sea">Sea state <output id="lesson-value">43%</output></label>
+<input id="lesson-sea" type="range" min="0" max="1" step="0.01" value="0.43">
+<svg id="wave-diagram" viewBox="0 0 800 260" role="img" aria-label="Three waves combine into a larger irregular wave. Higher sea state increases amplitude.">
+<path d="M0 140H800" stroke="#526e79" stroke-dasharray="4 7" fill="none"/>
+<path class="component"/><path class="component"/><path class="component"/><path id="combined-wave"/>
+<text x="18" y="240">Long swell + medium waves + short ripples</text></svg>
+<button id="lesson-animate" type="button" aria-pressed="false">Animate the waves</button>
+<span class="lab-note">Animation starts only when requested.</span></section><div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Preset</th>
+<th align="right">Sea parameter</th>
+<th align="right">Time</th>
+<th align="right">Cloud cover</th>
+<th>Rain</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open sea</td>
+<td align="right">0.43</td>
+<td align="right">15:30</td>
+<td align="right">35%</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Dusk</td>
+<td align="right">0.29</td>
+<td align="right">18:27</td>
+<td align="right">40%</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Storm</td>
+<td align="right">0.90</td>
+<td align="right">14:00</td>
+<td align="right">98%</td>
+<td>On</td>
+</tr>
+<tr>
+<td>Night</td>
+<td align="right">0.30</td>
+<td align="right">00:00</td>
+<td align="right">24%</td>
+<td>Off</td>
+</tr>
+</tbody></table></div>
+<p>A storm changes several mutually reinforcing cues: larger displacement, more broken highlights and whitecaps, dense cloud cover, reduced horizon contrast, rain, and occasional lightning. A taller wave alone looks like a larger calm sea. Weather coherence does more for credibility than merely adding polygons.</p>
+<h3>Optics: water is a mirror and a volume</h3>
+<p>Fresnel reflection means that water reflects more of the sky at grazing angles than when viewed straight down. The shader combines that behavior with deep-water color, approximate absorption, crest transmission, rough sun highlights, and a boat reflection pass. Dark troughs and grazing sky reflection are essential cues to open-sea depth. Adding uniform cyan would instead suggest a shallow lagoon.</p>
+<p>The displayed color is also shaped by exposure and ACES filmic tone mapping. Tone mapping compresses bright light into the screen&#39;s limited range. This is one reason copying an RGB value from a photograph does not reproduce its material: the lighting and display transform must agree as well.</p>
+<p>The sky, water reflections, and cloud shadows share procedural cloud functions and motion. Shared noise alone is insufficient if each system samples different coordinates. A mismatched cloud footprint was corrected during review. Underwater ambient color also needed one consistent model across sky/background and surface shading to avoid a visible horizontal seam.</p>
+<h3>Foam: a threshold is an assumption about data</h3>
+<p>The water computes a compression proxy from the horizontal displacement derivatives. Whitecaps combine that proxy, positive crest position, sea state, and small noise masks. The final compression threshold moves from 0.34 toward 0.19 as sea state increases, with a 0.065 transition band. These are tuned coefficients in this shader, not universal breaking-wave constants.</p>
+<p>The first thresholds did not produce the intended foam. A useful lesson is to inspect the actual distribution of the field being thresholded. A plausible-looking number outside its useful range gives either no foam or a white blanket. A live compression histogram would make future calibration easier; that diagnostic has not been built. Thin broken crest marks worked better than unstructured white blobs.</p>
+<p>The wake uses the boat&#39;s forward direction, distance behind the hull, a V-shaped envelope, and narrow stern turbulence. It is connected to the hull visually. It is not a hydrodynamic wake solver and does not transfer momentum into the main wave spectrum.</p>
+<h3>Buoyancy and underwater life: coordinates must mean the same thing</h3>
+<p>The yacht samples the same wave field as the GPU, including four iterations to invert Gerstner horizontal displacement before looking up a world-space height. Sampling the undisplaced coordinates would put the boat on a neighboring part of the wave. Fore/aft and port/starboard samples set its tilt. This is geometric wave following, not a rigid-body buoyancy simulation with forces, inertia, and sail aerodynamics.</p>
+<p>Underwater fish use instanced meshes: the GPU reuses one small geometry at many transforms. There are 96 fish, animated tails, sparse particles, and restrained additive light shafts. Depth attenuation darkens the water. The shafts are geometric effects, not volumetric transport, and the fish do not react as an ecological school. Their silhouettes remain a visible shortcut.</p>
+<h3>Stability: avoid a feedback problem you do not need</h3>
+<p>Click ripples occupy 12 bounded slots. Each impulse has a position, start time, strength, outward-moving front, exponential decay, and a nine-second lifetime. They perturb the shading normal rather than feed energy back into a grid simulation. This removes a common source of splash blow-ups when frame times vary.</p>
+<p>The animation loop caps elapsed simulation time at 50 ms per frame; manual QA stepping caps at 100 ms. This is a stability tradeoff: after a long stall, simulated time advances more slowly than wall-clock time. It does not catch up with an unbounded step. Tests included uneven steps and simulation time 100000 seconds, but that is not a guarantee of indefinite floating-point precision.</p>
+<blockquote>
+<p>Realism comes from agreement between cues. A beautiful reflection cannot rescue a boat floating on the wrong wave.</p>
+</blockquote>
+<h2 id="section-5">5. Tools, agents, and human decisions</h2>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tool or role</th>
+<th>What it did in this session</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPT-6 Astra, xhigh implementation agent</td>
+<td>Built the procedural scene and iterated on rendering and interaction defects</td>
+</tr>
+<tr>
+<td>Separate GPT-6 Astra, xhigh review agent</td>
+<td>Inspected source and real screenshots; challenged numerical and visual claims</td>
+</tr>
+<tr>
+<td>Coordinating agent and user</td>
+<td>Supplied the brief, reference analysis, visible-browser feedback, publishing direction, and final constraints</td>
+</tr>
+<tr>
+<td>Three.js 0.180.0 / GLSL / Vite 7.1.7</td>
+<td>Rendered the scene, expressed the shading model, and served/built the app</td>
+</tr>
+<tr>
+<td>Playwright CLI / Chrome 154</td>
+<td>Clicked controls, sampled animation cadence, checked layouts, and captured actual screenshots</td>
+</tr>
+<tr>
+<td>Native Windows screen and input APIs</td>
+<td>Confirmed the user-visible Chrome window and Storm interaction when a local link appeared to fail</td>
+</tr>
+<tr>
+<td>Dev Journey skill</td>
+<td>Required a reproducible account of failures, omissions, evidence, and costs instead of a victory lap</td>
+</tr>
+<tr>
+<td>Marked 18.0.14</td>
+<td>Converts this trusted, repository-owned Markdown to a static HTML learning page at build time</td>
+</tr>
+<tr>
+<td>Git / GitHub CLI / GitHub Actions / Pages</td>
+<td>Version control, authenticated repository creation, repeatable builds, and static public hosting</td>
+</tr>
+</tbody></table></div>
+<p>The independent reviewer was another automated agent, not an outside human or an oceanographer. Its findings mattered: wake numerical failures, inverted motion, underwater seams, cloud alignment, and keyboard behavior were corrected. A second model opinion is useful pressure, but it is not an objective realism certification.</p>
+<p>The user supplied explicit implementation approval, chose GPT-6 Astra with xhigh effort, requested screenshot milestones, reported the failed local link, requested computer use, and authorized public publication. Existing GitHub authentication was used; no new credentials were requested or embedded in files. Local restricted-folder operations passed automatic approval review. No exact model token usage, monetary bill, or aggregate session duration was available. No rate-limit reset date or quota expenditure can be stated reliably.</p>
+<p>The publication workflow keeps the main experience static. Markdown and screenshots become ordinary HTML and image files. The wave lesson runs locally in the reader&#39;s browser. There is no need for a server function, AI key, paid inference endpoint, or remote font.</p>
+<h2 id="section-6">6. What went wrong — and what each fix teaches</h2>
+<h3>6.1 Black water behind the yacht</h3>
+<p>Wake calculations and lighting inputs could enter invalid numerical ranges. The symptom was a black band rather than a clear exception. Denominators and inputs were bounded; the final review checked wake denominators, Fresnel inputs, and bow squaring. This is a useful GPU lesson: a shader can compile and still produce NaNs for particular pixels. Finite-value checks and actual screenshots complement compilation.</p>
+<h3>6.2 Foam that missed the useful range</h3>
+<p>Initial foam thresholds were ineffective. The correction aligned thresholds and crest masks with the field the shader actually generated. A static threshold should be revisited when amplitude, steepness, noise, or the wave spectrum changes. There is no universal “foam amount” that transfers between implementations.</p>
+<h3>6.3 Yacht and fish orientation</h3>
+<p>Motion signs did not initially agree with the modeled forward axes. Fixes corrected yacht buoyancy/orientation and fish heading. A model&#39;s local positive X or Z axis has to match the direction assumed by its animation. Testing only a front-on screenshot can hide a reversed orientation.</p>
+<h3>6.4 The underwater seam and cloud mismatch</h3>
+<p>A horizontal color boundary exposed separate underwater color calculations. Another inconsistency made cloud shadows disagree with the sky. Shared ambient calculations and aligned sampling reduced these discontinuities. Coordinates, depth conventions, and units are interfaces just as much as function signatures are.</p>
+<p><img loading="lazy" decoding="async" src="../media/ocean-underwater.png" alt="Underwater scene after the color seam correction"></p>
+<h3>6.5 Spacebar pause and keyboard focus</h3>
+<p>Keyboard handling needed to distinguish a scene action from a focused control&#39;s native action. Review found a pause bug; the final interaction suite verified that Space freezes and resumes simulation time. Camera controls, sliders, buttons, and dialogs must coexist without every key being intercepted globally.</p>
+<h3>6.6 Screenshots that existed but had not reached the user</h3>
+<p>Rendering and sharing were separate failure surfaces. The app could be running and PNGs could be inspected locally while screenshot transfer remained blocked. The prepared-upload helper was unavailable in the Windows context; the supported direct upload route eventually delivered the images. Public documentation uses curated application captures, not desktop screenshots containing unrelated tabs or session metadata.</p>
+<h3>6.7 A live server did not mean an opened browser</h3>
+<p>The user clicked a local link and saw nothing. HTTP 200 disproved the dead-server assumption. Opening Chrome directly solved the visible-launch requirement. Focus and display scaling then complicated mouse verification. The guard message <code>Ocean 3D is not foreground; no mouse input sent.</code> was a refusal to click the wrong window, not a failed ocean render. No unrelated browser work was closed.</p>
+<h3>6.8 Documentation and build friction</h3>
+<p>During publication, an attempted patch that deleted and added the same README in one operation was rejected: <code>invalid patch: multiple operations target</code> followed by the local README path. The file was then written with a correctly quoted UTF-8 write. A first license lookup expected <code>LICENSE.md</code> for Marked; the installed package used a different filename. These were authoring errors, not application failures. The lockfile and actual installed package were treated as evidence rather than guessing filenames.</p>
+<p>A first preview navigation returned <code>net::ERR_CONNECTION_REFUSED</code>; a process launch had been mistaken for a ready server. The check was changed to probe HTTP readiness. The Playwright CLI sandbox also raised <code>ReferenceError: URL is not defined</code> for a helper available in many other JavaScript environments; simple path joining removed that assumption. Finally, putting a nested HTML page under the static public folder let the development server fall back to the ocean app instead of the article. Registering the journey as a real second Vite HTML entry made development and production routing agree.</p>
+<h3>6.9 Unknown unknowns worth watching</h3>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Surprise</th>
+<th>Why it happens</th>
+<th>Mitigation here and the remaining gap</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A still looks good; motion sparkles</td>
+<td>Fine waves become smaller than a pixel or change too fast between frames</td>
+<td>Distance filtering reduces detail; temporal aliasing still needs cross-device video review</td>
+</tr>
+<tr>
+<td>A calm-to-storm slider destabilizes a boat</td>
+<td>Height, horizontal displacement, and CPU sampling no longer agree</td>
+<td>Shared wave definitions and inverse sampling; no physical capsize or full buoyancy model</td>
+</tr>
+<tr>
+<td>A shader compiles but a patch turns black</td>
+<td>Division, exponentiation, or normalization enters an invalid range</td>
+<td>Bounded inputs and reviewed wake formulas; compilation alone is insufficient</td>
+</tr>
+<tr>
+<td>“More foam” becomes a white carpet</td>
+<td>Thresholds assume the wrong compression distribution</td>
+<td>Tuned crest/compression masks; a histogram/debug overlay is a future improvement</td>
+</tr>
+<tr>
+<td>A camera-centered world shows seams</td>
+<td>Local coordinates are used where world coordinates were needed</td>
+<td>World-space phases and shared functions; very long-distance floating-origin precision remains untested</td>
+</tr>
+<tr>
+<td>A high-DPI laptop is much slower</td>
+<td>Pixel cost grows with DPR squared; 1.5 DPR means 2.25 times the pixels</td>
+<td>DPR capped at 1.5; no adaptive resolution or broad mobile thermal testing</td>
+</tr>
+<tr>
+<td>Headless FPS overpromises</td>
+<td>Display refresh, browser throttling, GPU scheduling, and visibility differ</td>
+<td>Label headless numbers; actual visible launch verified; no sustained visible benchmark yet</td>
+</tr>
+<tr>
+<td>A phone layout fits but is not fully playable</td>
+<td>Responsive CSS does not supply keyboard-equivalent touch movement</td>
+<td>Presets and cameras are usable; full touch flight and phone performance remain open</td>
+</tr>
+<tr>
+<td>It works locally but deploys blank</td>
+<td>A project site lives below a repository path; root-relative assets point elsewhere</td>
+<td>Relative Vite base and deployed asset checks; custom domain changes need another check</td>
+</tr>
+<tr>
+<td>Opening HTML from disk fails</td>
+<td>ES module loading and browser origin rules differ from HTTP hosting</td>
+<td>Use Vite or Pages; do not disable browser security or rely on file URLs</td>
+</tr>
+<tr>
+<td>Audio appears broken</td>
+<td>Browsers prevent autoplay before a gesture</td>
+<td>Explicit sound button; no autoplay promise</td>
+</tr>
+<tr>
+<td>Source is public but reuse terms are unclear</td>
+<td>Publishing and licensing are separate choices</td>
+<td>Preserve dependency notices; project-wide license selection remains open</td>
+</tr>
+<tr>
+<td>A repeated build looks slightly different</td>
+<td>Timing, viewport, shader precision, and GPU implementation change the frame</td>
+<td>Fixed QA scene settings and lockfile; bit-identical cross-GPU screenshots are not promised</td>
+</tr>
+</tbody></table></div>
+<h2 id="section-7">7. Verification — separate observation from inference</h2>
+<p>The local browser suite passed 27 checks: presets, slider extremes, time/cloud changes, switches, panel collapse, help, audio enable/mute, free-flight movement, pause/resume, underwater entry, the 72-second tour handoff, uneven time steps, finite long-time state, and three viewport layouts. The tested viewports were 1152 × 720, 844 × 390, and 390 × 844. A layout fit is not a physical-phone performance test.</p>
+<p>The production build passed and its output was served on a separate local port. The production app loaded, Storm worked, and no browser errors were observed in that smoke test. Final local interaction review reported zero console errors and warnings. Eight final scene modes had actual screenshots inspected. The independent review reported no remaining execution blocker while explicitly rejecting photographic-realism claims.</p>
+<h3>What the performance number actually means</h3>
+<p>The sustained sample ran Storm with cinematic camera, yacht, rain, and natural lightning for <strong>45.006 seconds / 5257 frames</strong> after a two-second warmup. Hardware was an NVIDIA GeForce RTX 3050 Laptop GPU via ANGLE Direct3D11; browser was Headless Chrome 154 on Windows; viewport/render size was 1600 × 1000 at DPR 1.</p>
+<div class="table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th align="right">Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Average requestAnimationFrame cadence</td>
+<td align="right">116.81 FPS</td>
+</tr>
+<tr>
+<td>Slowest one-second interval</td>
+<td align="right">108.26 FPS</td>
+</tr>
+<tr>
+<td>Median frame interval</td>
+<td align="right">7.0 ms</td>
+</tr>
+<tr>
+<td>p95 / p99 interval</td>
+<td align="right">14.0 / 14.1 ms</td>
+</tr>
+<tr>
+<td>Maximum interval</td>
+<td align="right">14.6 ms</td>
+</tr>
+<tr>
+<td>Frames longer than 33.34 ms</td>
+<td align="right">0</td>
+</tr>
+</tbody></table></div>
+<p>The slowest one-second interval is <strong>not</strong> a statistical “1% low.” Cadence is not GPU render time. Constant renderer geometry/texture counts over 45 seconds do not prove the absence of memory leaks over hours. Separate three-second mode measurements were only spot checks. A visible Chrome storm screenshot later showed 53 FPS on the HUD and the opening showed 60 FPS. Those are brief observations under different conditions, not a controlled headless-versus-visible experiment.</p>
+<p><img loading="lazy" decoding="async" src="../media/ocean-night.png" alt="Moonlit ocean: actual final browser capture"></p>
+<h3>Publication checks</h3>
+<p>The repository uses relative Vite asset paths so the same build works below <code>/gpt-6-astra-3D-ocean/</code>. GitHub Actions installs the exact lockfile, regenerates the journey, builds Vite output, and deploys that artifact to Pages. The live game and journey must be checked after deployment: a green workflow is evidence of a deployed artifact, not proof of correct links, shader rendering, or input behavior. Publication findings are recorded in <a href="https://github.com/az9713/gpt-6-astra-3D-ocean/blob/main/docs/VERIFICATION.md">the verification guide</a>.</p>
+<p>The <a href="https://vite.dev/guide/static-deploy.html#github-pages">Vite deployment guide</a> documents why a repository site needs appropriate asset bases. The project uses a relative base to support both local and repository subpath hosting. No security settings or browser cross-origin protections were disabled.</p>
+<h2 id="section-8">8. Where things stand — a playable lesson, with visible limits</h2>
+<p><a href="https://az9713.github.io/gpt-6-astra-3D-ocean/">Play Ocean 3D</a> or <a href="https://github.com/az9713/gpt-6-astra-3D-ocean">open the repository</a>. The README puts Play and this journey first, followed by a clickable screenshot. GitHub cannot execute JavaScript inside a README; one click to a static hosted game is the practical low-friction route. The journey has no required install or external fonts.</p>
+<p>The source, lockfile, original prompt, screenshots, Markdown journey, generated HTML, public test summaries, and deployment workflow are durable project artifacts. Private attachments, local logs, account details, machine paths, and unrelated desktop captures are excluded. The app works without a runtime key or service. No project-wide license has yet been selected; dependency notices do not silently license the original project or the video.</p>
+<p>The remaining realism work is concrete: richer volumetric clouds, less regular specular response, better fish and shaft geometry, a statistically richer wave spectrum, and physically integrated yacht motion. The remaining product work includes sustained visible-browser and mobile thermal measurements, broader browser testing, keyboard-equivalent touch flight, adaptive resolution, and a reduced-motion experience for the main scene. The demo stands without those improvements, but it is not a completed photoreal ocean research renderer.</p>
+<p>For a learning exercise, change one cue at a time. Remove distance fading and look for shimmering at the horizon. Change the foam threshold and observe where it saturates. Compare an uncorrected height sample with the inverse world-space sampler. Then restore the change and record the difference. These experiments teach more than simply increasing a “realism” slider.</p>
+<blockquote>
+<p>Ship the evidence with the claim. Keep the illusion enjoyable, and keep the explanation honest.</p>
+</blockquote>
+<div class="end-cta"><p>Try one idea while it is fresh: switch from Open sea to Storm, then look for the cues that change together.</p><a class="play" href="../">Explore Ocean 3D ↗</a></div></article></div>
+<footer>Ocean 3D / Pelagic · Procedural, playable, and still visibly CGI.<br><a href="../">Play</a> · <a href="https://github.com/az9713/gpt-6-astra-3D-ocean">Repository</a> · <a href="https://www.youtube.com/watch?v=T-E7rmD6rh4&amp;t=697s">Matt Berman's video</a></footer>
+<script>
+const slider=document.querySelector('#lesson-sea'),readout=document.querySelector('#lesson-value'),button=document.querySelector('#lesson-animate');
+const paths=[...document.querySelectorAll('.component')],sum=document.querySelector('#combined-wave');
+let time=0,running=false,last=0,raf;
+function draw(){const s=Number(slider.value),a=(.028+2.65*Math.pow(s,1.55))*22;readout.textContent=Math.round(s*100)+'%';const components=[[],[],[]],total=[];for(let x=0;x<=800;x+=4){const terms=[Math.sin(x*.017-time)*a,Math.sin(x*.042-time*1.57+1.6)*a*.36,Math.sin(x*.11-time*2.54+3)*a*.12];terms.forEach((v,i)=>components[i].push((x?'L':'M')+x+','+(140-v).toFixed(2)));total.push((x?'L':'M')+x+','+(140-terms.reduce((p,v)=>p+v,0)).toFixed(2));}paths.forEach((p,i)=>p.setAttribute('d',components[i].join(' ')));sum.setAttribute('d',total.join(' '));}
+function tick(now){if(!running)return;time+=last?Math.min((now-last)/1000,.05):0;last=now;draw();raf=requestAnimationFrame(tick);}
+function stop(){running=false;last=0;cancelAnimationFrame(raf);button.textContent='Animate the waves';button.setAttribute('aria-pressed','false');}
+button.addEventListener('click',()=>{if(running){stop();return;}running=true;last=0;button.textContent='Pause the waves';button.setAttribute('aria-pressed','true');raf=requestAnimationFrame(tick);});slider.addEventListener('input',draw);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});draw();
+if(matchMedia('(max-width:900px)').matches)document.querySelector('.toc details').open=false;
+</script></body></html>

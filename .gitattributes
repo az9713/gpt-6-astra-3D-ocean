@@ -1,0 +1,4 @@
+* text=auto
+README.txt -text
+*.png binary
+*.bat text eol=crlf

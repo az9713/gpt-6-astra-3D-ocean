@@ -1,0 +1,454 @@
+{
+  "interaction": {
+    "checkedAt": "2026-09-30T11:38:17.751Z",
+    "checks": [
+      {
+        "name": "WebGL2 initialized",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Opening cinematic starts automatically",
+        "passed": true,
+        "detail": {
+          "sea": 0.43,
+          "timeOfDay": 15.5,
+          "clouds": 0.35,
+          "rain": false,
+          "yacht": true,
+          "paused": false,
+          "view": "cinematic",
+          "sound": false,
+          "simulationTime": 1.116684
+        }
+      },
+      {
+        "name": "Storm preset responds to real click",
+        "passed": true,
+        "detail": {
+          "sea": 0.9,
+          "timeOfDay": 14,
+          "clouds": 0.98,
+          "rain": true,
+          "yacht": true,
+          "paused": false,
+          "view": "cinematic",
+          "sound": false,
+          "simulationTime": 1.193184
+        }
+      },
+      {
+        "name": "Night preset responds to real click",
+        "passed": true,
+        "detail": {
+          "sea": 0.3,
+          "timeOfDay": 0,
+          "clouds": 0.24,
+          "rain": false,
+          "yacht": true,
+          "paused": false,
+          "view": "cinematic",
+          "sound": false,
+          "simulationTime": 1.2555839999999998
+        }
+      },
+      {
+        "name": "Dusk preset responds to real click",
+        "passed": true,
+        "detail": {
+          "sea": 0.29,
+          "timeOfDay": 18.45,
+          "clouds": 0.4,
+          "rain": false,
+          "yacht": true,
+          "paused": false,
+          "view": "cinematic",
+          "sound": false,
+          "simulationTime": 1.3110839999999997
+        }
+      },
+      {
+        "name": "Open sea preset responds to real click",
+        "passed": true,
+        "detail": {
+          "sea": 0.43,
+          "timeOfDay": 15.5,
+          "clouds": 0.35,
+          "rain": false,
+          "yacht": true,
+          "paused": false,
+          "view": "cinematic",
+          "sound": false,
+          "simulationTime": 1.3597839999999997
+        }
+      },
+      {
+        "name": "Sea slider reaches glassy minimum by keyboard",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Sea slider reaches storm maximum by keyboard",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Time of day slider updates simulation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Cloud cover slider updates simulation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Rain switch changes weather",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Yacht switch hides yacht",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Settings panel collapses",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Keyboard guide opens",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Keyboard guide closes with Escape",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Sound enables after gesture",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Sound mutes",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Free flight responds to W",
+        "passed": true,
+        "detail": {
+          "movedMetres": 4.332799999999936
+        }
+      },
+      {
+        "name": "Pause freezes wave simulation time",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Resume advances time",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Below control enters underwater",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Opening tour hands off to free flight after 72 seconds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Long-time waves and irregular frame steps stay finite",
+        "passed": true,
+        "detail": {
+          "time": 100000.35100000001,
+          "steps": [
+            0,
+            0.016,
+            0.033,
+            0.1,
+            1,
+            10,
+            0.002
+          ]
+        }
+      },
+      {
+        "name": "Viewport 1152x720 controls fit",
+        "passed": true,
+        "detail": {
+          "noDocumentOverflow": true,
+          "panelBottom": 404,
+          "viewsTop": 596,
+          "controlsOverlap": false
+        }
+      },
+      {
+        "name": "Viewport 844x390 controls fit",
+        "passed": true,
+        "detail": {
+          "noDocumentOverflow": true,
+          "panelBottom": 291,
+          "viewsTop": 298,
+          "controlsOverlap": false
+        }
+      },
+      {
+        "name": "Viewport 390x844 controls fit",
+        "passed": true,
+        "detail": {
+          "noDocumentOverflow": true,
+          "panelBottom": 343,
+          "viewsTop": 731,
+          "controlsOverlap": false
+        }
+      },
+      {
+        "name": "No uncaught browser errors during interactions",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "passed": 27,
+    "failed": [],
+    "viewports": [
+      {
+        "width": 1152,
+        "height": 720,
+        "noDocumentOverflow": true,
+        "panelBottom": 404,
+        "viewsTop": 596,
+        "controlsOverlap": false
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "noDocumentOverflow": true,
+        "panelBottom": 291,
+        "viewsTop": 298,
+        "controlsOverlap": false
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "noDocumentOverflow": true,
+        "panelBottom": 343,
+        "viewsTop": 731,
+        "controlsOverlap": false
+      }
+    ],
+    "errors": []
+  },
+  "performance": {
+    "measuredAt": "2026-09-30T11:44:24.386Z",
+    "mode": "Storm, cinematic camera, yacht visible, rain and natural lightning active",
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "viewport": [
+        1600,
+        1000
+      ],
+      "devicePixelRatio": 1,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 Laptop GPU (0x000025A2) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+    },
+    "cadence": {
+      "durationMs": 45005.899999999965,
+      "frames": 5257,
+      "meanFps": 116.80690753878945,
+      "slowestOneSecondFps": 108.26380611839616,
+      "medianFrameMs": 7,
+      "p95FrameMs": 14,
+      "p99FrameMs": 14.099999999976717,
+      "maxFrameMs": 14.599999999976717,
+      "framesOver33ms": 0,
+      "framesOver50ms": 0,
+      "buckets": [
+        {
+          "seconds": 1.0067999999999884,
+          "fps": 108.26380611839616
+        },
+        {
+          "seconds": 2.0068999999999653,
+          "fps": 108.98910108989355
+        },
+        {
+          "seconds": 3.0068999999999653,
+          "fps": 118
+        },
+        {
+          "seconds": 4.013799999999988,
+          "fps": 119.17767404905872
+        },
+        {
+          "seconds": 5.020799999999988,
+          "fps": 119.16583912611718
+        },
+        {
+          "seconds": 6.020799999999988,
+          "fps": 118
+        },
+        {
+          "seconds": 7.0275999999999765,
+          "fps": 116.20977353992983
+        },
+        {
+          "seconds": 8.027699999999953,
+          "fps": 114.98850114988768
+        },
+        {
+          "seconds": 9.034599999999976,
+          "fps": 114.21193763034795
+        },
+        {
+          "seconds": 10.034599999999976,
+          "fps": 115
+        },
+        {
+          "seconds": 11.048299999999989,
+          "fps": 115.41876294761632
+        },
+        {
+          "seconds": 12.055199999999953,
+          "fps": 118.1845267653234
+        },
+        {
+          "seconds": 13.055399999999965,
+          "fps": 119.97600479903879
+        },
+        {
+          "seconds": 14.062099999999976,
+          "fps": 120.1946955398814
+        },
+        {
+          "seconds": 15.069199999999954,
+          "fps": 117.16810644424856
+        },
+        {
+          "seconds": 16.076,
+          "fps": 115.21652761223146
+        },
+        {
+          "seconds": 17.076099999999975,
+          "fps": 111.98880111989062
+        },
+        {
+          "seconds": 18.076099999999975,
+          "fps": 109
+        },
+        {
+          "seconds": 19.082899999999967,
+          "fps": 112.236789829163
+        },
+        {
+          "seconds": 20.082899999999967,
+          "fps": 120
+        },
+        {
+          "seconds": 21.082899999999967,
+          "fps": 121
+        },
+        {
+          "seconds": 22.082899999999967,
+          "fps": 119
+        },
+        {
+          "seconds": 23.08979999999999,
+          "fps": 118.18452676531656
+        },
+        {
+          "seconds": 24.096799999999988,
+          "fps": 115.19364448857993
+        },
+        {
+          "seconds": 25.110599999999977,
+          "fps": 113.43460248569868
+        },
+        {
+          "seconds": 26.110599999999977,
+          "fps": 116
+        },
+        {
+          "seconds": 27.1175,
+          "fps": 117.1913794815744
+        },
+        {
+          "seconds": 28.1175,
+          "fps": 119
+        },
+        {
+          "seconds": 29.1175,
+          "fps": 120
+        },
+        {
+          "seconds": 30.13129999999999,
+          "fps": 119.35292957190904
+        },
+        {
+          "seconds": 31.138099999999977,
+          "fps": 119.18951132300495
+        },
+        {
+          "seconds": 32.13809999999998,
+          "fps": 117
+        },
+        {
+          "seconds": 33.145,
+          "fps": 115.2050849140901
+        },
+        {
+          "seconds": 34.152,
+          "fps": 112.214498510427
+        },
+        {
+          "seconds": 35.15889999999997,
+          "fps": 112.22564306287012
+        },
+        {
+          "seconds": 36.16579999999999,
+          "fps": 118.18452676531656
+        },
+        {
+          "seconds": 37.16579999999999,
+          "fps": 122
+        },
+        {
+          "seconds": 38.16579999999999,
+          "fps": 121
+        },
+        {
+          "seconds": 39.16579999999999,
+          "fps": 121
+        },
+        {
+          "seconds": 40.165899999999965,
+          "fps": 117.98820117988475
+        },
+        {
+          "seconds": 41.17279999999999,
+          "fps": 116.19823219783225
+        },
+        {
+          "seconds": 42.17279999999999,
+          "fps": 115
+        },
+        {
+          "seconds": 43.179699999999954,
+          "fps": 117.19137948158118
+        },
+        {
+          "seconds": 44.18639999999996,
+          "fps": 121.18804013112009
+        }
+      ]
+    },
+    "geometryCountStable": true,
+    "textureCountStable": true
+  }
+}

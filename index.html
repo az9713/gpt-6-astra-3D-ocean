@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101c25" />
+  <meta name="description" content="An interactive open ocean. Sail through changing seas, watch the weather, and explore below the surface." />
+  <title>Ocean 3D — Pelagic</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101c25'/%3E%3Cpath d='M10 32q11-14 22 0t22 0M10 42q11-14 22 0t22 0' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <main id="app">
+    <canvas id="ocean" aria-label="Interactive three-dimensional ocean. Use the scene controls or press F to fly and W A S D to move." tabindex="0"></canvas>
+    <div id="loading"><span class="loading-mark">≈</span><p>Finding the horizon</p><small>PELAGIC</small></div>
+    <header class="identity"><a href="#" id="brand" aria-label="Reset ocean view"><span class="brand-mark">≈</span> PELAGIC</a><span class="edition">AN OPEN OCEAN</span></header>
+    <div class="top-right"><span class="live-dot"></span><span id="live-label">LIVE SIMULATION</span><button id="sound-toggle" class="icon-button" aria-label="Enable ocean sound" title="Ocean sound"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5ZM16 9l5 6m0-6-5 6"/></svg></button><button id="info-toggle" class="icon-button" aria-label="Show keyboard controls" title="Keyboard controls (H)">?</button></div>
+    <section class="intro" id="intro"><div class="eyebrow">THE ENDLESS BLUE</div><h1>Somewhere,<br>out at sea.</h1><p>No shore. No hurry. Just the ocean.</p></section>
+    <section class="control-panel" aria-label="Ocean settings">
+      <button class="panel-heading" id="panel-toggle" aria-expanded="true"><span>CONDITIONS</span><span id="panel-icon">−</span></button>
+      <div id="panel-content">
+        <div class="presets" role="group" aria-label="Scene presets"><button data-preset="clear" class="active">Open sea</button><button data-preset="sunset">Dusk</button><button data-preset="storm">Storm</button><button data-preset="night">Night</button></div>
+        <label class="slider-label" for="sea"><span>Sea state</span><output id="sea-value">Moderate</output></label><input id="sea" type="range" min="0" max="1" step="0.01" value="0.43" />
+        <label class="slider-label" for="daytime"><span>Time of day</span><output id="daytime-value">15:30</output></label><input id="daytime" type="range" min="0" max="24" step="0.05" value="15.5" />
+        <label class="slider-label" for="clouds"><span>Cloud cover</span><output id="clouds-value">35%</output></label><input id="clouds" type="range" min="0" max="1" step="0.01" value="0.35" />
+        <div class="toggle-row"><label for="rain">Rain</label><button id="rain" class="switch" role="switch" aria-checked="false" aria-label="Rain"><span></span></button><label for="yacht">Yacht</label><button id="yacht" class="switch" role="switch" aria-checked="true" aria-label="Yacht"><span></span></button></div>
+      </div>
+    </section>
+    <div class="view-controls" role="group" aria-label="Camera view"><button class="active" data-view="cinematic"><span>01</span> Drift</button><button data-view="sail"><span>02</span> Sail</button><button data-view="underwater"><span>03</span> Below</button><button data-view="free"><span>04</span> Fly <svg viewBox="0 0 16 16"><path d="M4 12 12 4M4 4h8v8"/></svg></button></div>
+    <footer><div class="location"><span class="crosshair">+</span><span>36° 24′ N &nbsp; 24° 56′ W</span><i></i><span>NORTH ATLANTIC</span></div><div class="status"><span id="mode-label">CINEMATIC DRIFT</span><span class="divider">/</span><span id="wind-label">WIND 14 KN</span><span class="divider">/</span><span id="fps-label">60 FPS</span></div></footer>
+    <div id="toast" role="status"></div>
+    <dialog id="help"><form method="dialog"><button class="close" aria-label="Close keyboard controls">×</button><div class="eyebrow">EXPLORE THE OCEAN</div><h2>A little room to wander.</h2><p>Choose <strong>Fly</strong>, then drag the ocean to look around. Scroll to change your flying speed.</p><div class="keys"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><span>Move</span><span><kbd>Q</kbd><kbd>E</kbd></span><span>Down / up</span><span><kbd>Shift</kbd></span><span>Move faster</span><span><kbd>F</kbd></span><span>Free flight</span><span><kbd>Space</kbd></span><span>Pause the sea</span><span><kbd>H</kbd></span><span>Show this guide</span><span><kbd>Esc</kbd></span><span>Return to drift</span></div><p class="help-note">Click the water to send a ripple across the surface. The four views are always available at the bottom of the screen.</p></form></dialog>
+    <div id="error" hidden></div>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
