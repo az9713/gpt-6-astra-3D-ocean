@@ -183,6 +183,8 @@ A first preview navigation returned `net::ERR_CONNECTION_REFUSED`; a process lau
 
 The initial publication smoke test found a missing article favicon and sampled the underwater camera transition too early. An explicit favicon and waiting for the actual underwater state corrected those checks. Visual inspection then exposed a relative screenshot hyperlink that needed the same path rewrite as inline images. The release checklist now exercises that link too. A whitespace check flagged intentional Markdown line breaks and inherited license formatting; those were reviewed rather than rewriting the original prompt.
 
+GitHub's first dependency scan then reported six Vite development-server advisories in the original 7.1.7 toolchain, including Windows file-access and UNC-path handling issues. The static hosted ocean does not run Vite, but local development still deserves a maintained toolchain. Publication therefore updated Vite to the fixed 7.3.5 release within the same major version. This is a different concern from shader correctness: a beautiful frame says nothing about the security of the tool serving it.
+
 ### 6.9 Unknown unknowns worth watching
 
 | Surprise | Why it happens | Mitigation here and the remaining gap |
