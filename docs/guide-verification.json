@@ -1,0 +1,356 @@
+{
+  "scope": "Local pre-commit working tree; production-preview guide and game, development-server controls",
+  "baseRevision": "d878f392b93b17432aa1d6e47637bd89485f6182",
+  "testedSourceGitBlobIds": {
+    "learn/template.html": "2526c1378fa28a40f45cea329979e4a93058cb5f",
+    "learn/index.html": "ba6a9b3799881abb6d17facae706eed93ca359c1",
+    "learn/style.css": "f6ccee4d6e5a8315dacbf1cc25337cc93f207996",
+    "learn/lab.js": "184f495b377df34362bfed8f3b722e962293ccfa",
+    "scripts/build-guide.mjs": "f31773aa88d24d3dce1edd36af3c543523cb86e1",
+    "scripts/check-guide.mjs": "be0d44578a7d9c7bd227c1b44691d00a725a4499",
+    "scripts/guide-smoke.js": "1fb399c5e2f67231cee023e4ff34c11dcb17c88c",
+    "src/ocean.js": "0f1c8f0f6b0eaf67010674f1477b30407960b94d",
+    "src/main.js": "5608a63bffc7e71afcc7d1b58079e8323fafcbab",
+    "src/atmosphere.js": "06f716cf1cbf571a5d4f92186612e9ebeab9edf9",
+    "src/objects.js": "4b3af4111c746aa88b0cc127f8dad9e2aae42f92",
+    "src/yacht.js": "8d686fee9eb261feaea7a2f470734c5bd56cc159",
+    "vite.config.js": "2fa9e8890d2f5d10a4b96c41804b284bb63314f3"
+  },
+  "sourceChecks": 18,
+  "guide": {
+    "checkedAt": "2026-09-30T19:09:12.765Z",
+    "root": "http://127.0.0.1:4174/learn/",
+    "provenance": "Desktop Chrome with emulated viewports and reduced-motion preference; not physical-device testing.",
+    "passed": 44,
+    "failed": [],
+    "checks": [
+      {
+        "name": "Guide returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "One main heading and eight navigable sections",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Seven actual source excerpts are rendered",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Every internal section link resolves",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Source excerpt links identify files and line ranges",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Wave lesson is still by default",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Sea state changes shape and its text readout",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Layer switch changes the sum and description",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Surface-direction switch removes arrows",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Step produces a new still frame",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Explicit animation starts",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Pause stops animation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Reset restores defaults and normal arrows",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Keyboard changes the sea slider",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Straight-on reflection is about two percent",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Grazing reflection rises above sixty percent",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Reduced motion disables continuous animation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Reduced motion retains manual stepping",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Motion preference can be changed without reloading",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: no page-wide overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: mobile contents initially collapsed",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: contents link navigates",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: lesson controls respond",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: primary touch targets are 44px high",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: no page-wide overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: mobile contents initially collapsed",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: contents link navigates",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: lesson controls respond",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: primary touch targets are 44px high",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: no page-wide overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: mobile contents initially collapsed",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: contents link navigates",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: lesson controls respond",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: primary touch targets are 44px high",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "All actual-render images decode",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Optional code details expand",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Legal-notices link returns 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Guide text and source excerpts work without JavaScript",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey link opens the existing learning page",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey has the canonical guide link",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey links back to the field guide",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Guide Play link opens a finite WebGL ocean",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No browser errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "No failed requests or HTTP errors",
+        "passed": true,
+        "detail": []
+      }
+    ]
+  },
+  "gameAndJourney": {
+    "checkedAt": "2026-09-30T19:09:23.43Z",
+    "root": "http://127.0.0.1:4174/",
+    "passed": 17,
+    "failed": [],
+    "checks": [
+      {
+        "name": "Live game returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "WebGL2 initialized with finite state",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Storm click changes sea, rain and clouds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Below enters underwater",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Night preset updates lighting time",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Free flight moves",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Game assets load from the repository subpath",
+        "passed": true,
+        "detail": [
+          "http://127.0.0.1:4174/assets/index-Cu39WQSn.js",
+          "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js",
+          "http://127.0.0.1:4174/assets/three-C0Kx9dIa.js",
+          "http://127.0.0.1:4174/assets/index-DBNGAcYT.css"
+        ]
+      },
+      {
+        "name": "Live journey returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey has eight numbered sections",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey final-render link loads an image",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Interactive wave lesson responds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Wave lesson animation toggles",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey screenshots loaded",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Mobile journey has no document overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey Play link opens the game",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No browser errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "No failed assets or HTTP errors",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "errors": [],
+    "failedRequests": []
+  },
+  "controlsSummary": {
+    "checkedAt": "2026-09-30T19:07:12.954Z",
+    "root": "http://127.0.0.1:4173/",
+    "passed": 73,
+    "failed": [],
+    "provenance": "Headless desktop Chrome; emulated CSS viewports and Chromium touch input. No physical-device or mobile performance claim."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "sourceRef": "main",
+  "examples": [
+    {
+      "id": "mesh",
+      "path": "src/ocean.js",
+      "first": 35,
+      "last": 43,
+      "text": "const segments=quality==='high'?380:260;\nconst g=new THREE.PlaneGeometry(2,2,segments,segments);g.rotateX(-Math.PI/2);\nconst p=g.attributes.position;\nfor(let i=0;i<p.count;i++) {\n let x=p.getX(i),z=p.getZ(i);const r=Math.max(Math.abs(x),Math.abs(z));\n const scale=105+Math.pow(r,3.0)*9200;\n p.setXYZ(i,x*scale,0,z*scale);\n}\ng.computeBoundingSphere();"
+    },
+    {
+      "id": "wave",
+      "path": "src/ocean.js",
+      "first": 56,
+      "last": 60,
+      "text": "float a=amp*scale*distanceFade;\nfloat f=k*dot(dir,position.xz+uCameraXZ)-freq*uTime+phase;\nfloat s=sin(f),c=cos(f);\nfloat q=steep/(max(scale,.2));\np.xz+=q*a*dir*c;p.y+=a*s;"
+    },
+    {
+      "id": "scale",
+      "path": "src/ocean.js",
+      "first": 53,
+      "last": 53,
+      "text": "float scale=.028+pow(uSea,1.55)*2.65;"
+    },
+    {
+      "id": "clock",
+      "path": "src/main.js",
+      "first": 128,
+      "last": 129,
+      "text": "const elapsed=(now-lastNow)/1000;lastNow=now;const dt=Math.max(0,Math.min(elapsed,.05));\nif(!state.paused)simTime+=dt;"
+    },
+    {
+      "id": "normal",
+      "path": "src/ocean.js",
+      "first": 68,
+      "last": 69,
+      "text": "vNormal=normalize(cross(dz,dx));\nvBreaking=1.0-(dx.x*dz.z-dx.z*dz.x);"
+    },
+    {
+      "id": "fresnel",
+      "path": "src/ocean.js",
+      "first": 123,
+      "last": 126,
+      "text": "float NoV=clamp(dot(N,V),.001,1.0);\nfloat fresnel=.0204+.9796*pow(1.0-NoV,5.0);\nvec3 rd=reflect(-V,N);rd.y=max(rd.y,.003);\nvec3 reflected=atmosphere(normalize(rd),false);"
+    },
+    {
+      "id": "foam",
+      "path": "src/ocean.js",
+      "first": 155,
+      "last": 157,
+      "text": "float threshold=mix(.34,.19,uSea);\nfloat crestGrain=noise2(vec2(dot(p,vec2(.92,.39))*.48,dot(p,vec2(-.39,.92))*2.4)+vec2(uTime*.12,0));\nfloat whitecap=smoothstep(threshold,threshold+.065,vBreaking)*smoothstep(.47,.72,foamNoise)*smoothstep(.35,.65,crestGrain)*smoothstep(.25,.75,uSea);"
+    }
+  ]
+}

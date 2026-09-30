@@ -4,6 +4,8 @@
 
 An open ocean you can explore in your browser: long swells, changing weather, a sailing yacht, moonlight, and life below the surface. Built with **GPT-6 Astra at xhigh reasoning effort**, Three.js, and custom shaders.
 
+**[How code becomes ocean — an interactive field guide](https://az9713.github.io/gpt-6-astra-3D-ocean/learn/)** · Start with triangles, make waves, and discover why reflections make them look wet. Plain-language explanations and excerpts from the actual code.
+
 [![Play Ocean 3D — a yacht crossing a deep-blue procedural ocean](public/media/ocean-open-sea.png)](https://az9713.github.io/gpt-6-astra-3D-ocean/)
 
 **Click the image or Play link to begin.** No install, sign-in, or API key. GitHub READMEs cannot execute an interactive JavaScript game, so this opens the playable GitHub Pages version in one click. It is an exploration sandbox; there is no score or win condition. Desktop Chrome or Edge with WebGL 2 is the tested path.

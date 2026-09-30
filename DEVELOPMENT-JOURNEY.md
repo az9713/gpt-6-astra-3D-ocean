@@ -5,6 +5,8 @@
 **Model and effort:** GPT-6 Astra, xhigh, for implementation and the independent automated review.  
 **Final render:** [Open sea screenshot](public/media/ocean-open-sea.png)
 
+**New to graphics?** Start with [How code becomes ocean](https://az9713.github.io/gpt-6-astra-3D-ocean/learn/), the plain-language field guide with actual source excerpts and interactive lessons.
+
 This is a record of a real build, including the parts that failed. Earlier implementation details are reconstructed from the surviving source, screenshots, interaction results, performance capture, independent review, and session handoff. The later visible-browser troubleshooting and publication work were recorded directly. Some early tool transcripts are unavailable; missing exact error strings, timings, and costs are not invented.
 
 ## 1. The brief — make an ocean, then distrust the first picture
