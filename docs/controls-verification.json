@@ -1,0 +1,519 @@
+{
+  "scope": "Local pre-commit controls working tree",
+  "baseRevision": "753da81c692a1053e740b15ac1a0322c3ed7d60f",
+  "testedSourceGitBlobIds": {
+    "index.html": "24cf347ae3163d3b6b82731ff1b6ccf460019086",
+    "src/main.js": "5608a63bffc7e71afcc7d1b58079e8323fafcbab",
+    "src/style.css": "0a50fb7877d7d04638b073cd69071da66fd9fccd",
+    "scripts/controls-smoke.js": "ecb4382faf4ebc614990f276520492cb4ac73fa1"
+  },
+  "result": {
+    "checkedAt": "2026-09-30T17:52:39.383Z",
+    "root": "http://127.0.0.1:4173/",
+    "provenance": "Headless desktop Chrome; emulated CSS viewports and Chromium touch input. No physical-device or mobile performance claim.",
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "viewports": [
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        568
+      ],
+      [
+        844,
+        390
+      ],
+      [
+        667,
+        375
+      ],
+      [
+        568,
+        320
+      ],
+      [
+        700,
+        500
+      ]
+    ],
+    "passed": 73,
+    "failed": [],
+    "checks": [
+      {
+        "name": "390x844: initially collapsed, with hidden controls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: compact Settings target",
+        "passed": true,
+        "detail": {
+          "x": 263,
+          "y": 71,
+          "width": 114,
+          "height": 44
+        }
+      },
+      {
+        "name": "390x844: panel stays on screen above camera controls",
+        "passed": true,
+        "detail": {
+          "panel": {
+            "x": 98,
+            "y": 70,
+            "width": 280,
+            "height": 365
+          },
+          "camera": {
+            "x": 16,
+            "y": 721,
+            "width": 358,
+            "height": 56
+          }
+        }
+      },
+      {
+        "name": "390x844: Settings targets are at least 44px",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: bottom switch is reachable by scrolling",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: heading stays visible while content scrolls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "390x844: closes without resetting conditions",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: initially collapsed, with hidden controls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: compact Settings target",
+        "passed": true,
+        "detail": {
+          "x": 193,
+          "y": 71,
+          "width": 114,
+          "height": 44
+        }
+      },
+      {
+        "name": "320x568: panel stays on screen above camera controls",
+        "passed": true,
+        "detail": {
+          "panel": {
+            "x": 28,
+            "y": 70,
+            "width": 280,
+            "height": 312.390625
+          },
+          "camera": {
+            "x": 16,
+            "y": 445,
+            "width": 288,
+            "height": 56
+          }
+        }
+      },
+      {
+        "name": "320x568: Settings targets are at least 44px",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: bottom switch is reachable by scrolling",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: heading stays visible while content scrolls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "320x568: closes without resetting conditions",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: initially collapsed, with hidden controls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: compact Settings target",
+        "passed": true,
+        "detail": {
+          "x": 717,
+          "y": 71,
+          "width": 114,
+          "height": 44
+        }
+      },
+      {
+        "name": "844x390: panel stays on screen above camera controls",
+        "passed": true,
+        "detail": {
+          "panel": {
+            "x": 552,
+            "y": 70,
+            "width": 280,
+            "height": 207
+          },
+          "camera": {
+            "x": 271.625,
+            "y": 287,
+            "width": 300.75,
+            "height": 56
+          }
+        }
+      },
+      {
+        "name": "844x390: Settings targets are at least 44px",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: bottom switch is reachable by scrolling",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: heading stays visible while content scrolls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "844x390: closes without resetting conditions",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "667x375: initially collapsed, with hidden controls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "667x375: compact Settings target",
+        "passed": true,
+        "detail": {
+          "x": 540,
+          "y": 71,
+          "width": 114,
+          "height": 44
+        }
+      },
+      {
+        "name": "667x375: panel stays on screen above camera controls",
+        "passed": true,
+        "detail": {
+          "panel": {
+            "x": 375,
+            "y": 70,
+            "width": 280,
+            "height": 192
+          },
+          "camera": {
+            "x": 183.125,
+            "y": 272,
+            "width": 300.75,
+            "height": 56
+          }
+        }
+      },
+      {
+        "name": "667x375: Settings targets are at least 44px",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "667x375: bottom switch is reachable by scrolling",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "667x375: heading stays visible while content scrolls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "667x375: closes without resetting conditions",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "568x320: initially collapsed, with hidden controls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "568x320: compact Settings target",
+        "passed": true,
+        "detail": {
+          "x": 441,
+          "y": 71,
+          "width": 114,
+          "height": 44
+        }
+      },
+      {
+        "name": "568x320: panel stays on screen above camera controls",
+        "passed": true,
+        "detail": {
+          "panel": {
+            "x": 276,
+            "y": 70,
+            "width": 280,
+            "height": 117
+          },
+          "camera": {
+            "x": 104,
+            "y": 197,
+            "width": 360,
+            "height": 56
+          }
+        }
+      },
+      {
+        "name": "568x320: Settings targets are at least 44px",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "568x320: bottom switch is reachable by scrolling",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "568x320: heading stays visible while content scrolls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "568x320: closes without resetting conditions",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "700x500: initially collapsed, with hidden controls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "700x500: compact Settings target",
+        "passed": true,
+        "detail": {
+          "x": 573,
+          "y": 71,
+          "width": 114,
+          "height": 44
+        }
+      },
+      {
+        "name": "700x500: panel stays on screen above camera controls",
+        "passed": true,
+        "detail": {
+          "panel": {
+            "x": 408,
+            "y": 70,
+            "width": 280,
+            "height": 275
+          },
+          "camera": {
+            "x": 199.625,
+            "y": 397,
+            "width": 300.75,
+            "height": 56
+          }
+        }
+      },
+      {
+        "name": "700x500: Settings targets are at least 44px",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "700x500: bottom switch is reachable by scrolling",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "700x500: heading stays visible while content scrolls",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "700x500: closes without resetting conditions",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Collapsed controls are excluded from keyboard tab order",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Space opens Settings without pausing/resuming the ocean",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Disclosure has a stable accessible name and controlled region",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "sea: input updates simulation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "daytime: input updates simulation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "clouds: input updates simulation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Range keyboard input changes the value",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Escape from a slider closes and restores Settings focus",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Rain switch updates state and aria-checked",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "storm: preset retains its original behavior",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "night: preset retains its original behavior",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "sunset: preset retains its original behavior",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "clear: preset retains its original behavior",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Outside tap closes Settings and still changes camera",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Portrait-to-landscape rotation preserves the open panel",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Desktop starts expanded after mobile resize",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Mobile disclosure preference survives a desktop resize",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Desktop disclosure preference survives a mobile resize",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Desktop initial panel retains its 242px layout",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Desktop preset remains usable",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Desktop Escape outside Settings still returns to Drift",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Help still opens",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Help Escape closes only the dialog",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Emulated touch opens Settings",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Native slider responds to an emulated touch drag",
+        "passed": true,
+        "detail": 0.82
+      },
+      {
+        "name": "Emulated touch toggles Rain",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Emulated touch closes Settings",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No document overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "WebGL scene remains finite",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No browser errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "No failed assets or HTTP errors",
+        "passed": true,
+        "detail": []
+      }
+    ]
+  }
+}

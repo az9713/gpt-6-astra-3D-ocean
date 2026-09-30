@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#101c25" />
   <meta name="description" content="An interactive open ocean. Sail through changing seas, watch the weather, and explore below the surface." />
   <title>Ocean 3D — Pelagic</title>
@@ -16,7 +16,7 @@
     <div class="top-right"><span class="live-dot"></span><span id="live-label">LIVE SIMULATION</span><button id="sound-toggle" class="icon-button" aria-label="Enable ocean sound" title="Ocean sound"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5ZM16 9l5 6m0-6-5 6"/></svg></button><button id="info-toggle" class="icon-button" aria-label="Show keyboard controls" title="Keyboard controls (H)">?</button></div>
     <section class="intro" id="intro"><div class="eyebrow">THE ENDLESS BLUE</div><h1>Somewhere,<br>out at sea.</h1><p>No shore. No hurry. Just the ocean.</p></section>
     <section class="control-panel" aria-label="Ocean settings">
-      <button class="panel-heading" id="panel-toggle" aria-expanded="true"><span>CONDITIONS</span><span id="panel-icon">−</span></button>
+      <button class="panel-heading" id="panel-toggle" aria-expanded="true" aria-controls="panel-content"><span>Settings</span><span id="panel-icon" aria-hidden="true">−</span></button>
       <div id="panel-content">
         <div class="presets" role="group" aria-label="Scene presets"><button data-preset="clear" class="active">Open sea</button><button data-preset="sunset">Dusk</button><button data-preset="storm">Storm</button><button data-preset="night">Night</button></div>
         <label class="slider-label" for="sea"><span>Sea state</span><output id="sea-value">Moderate</output></label><input id="sea" type="range" min="0" max="1" step="0.01" value="0.43" />

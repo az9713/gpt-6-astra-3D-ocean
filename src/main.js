@@ -138,7 +138,27 @@ for(const name of ['sea','daytime','clouds'])document.getElementById(name).addEv
 for(const name of ['rain','yacht'])document.getElementById(name).addEventListener('click',()=>{state[name]=!state[name];dismissIntro();syncUI();});
 document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>applyPreset(b.dataset.preset)));
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-document.querySelector('#panel-toggle').addEventListener('click',()=>{const panel=document.querySelector('.control-panel');const collapsed=panel.classList.toggle('collapsed');document.querySelector('#panel-toggle').setAttribute('aria-expanded',String(!collapsed));document.querySelector('#panel-icon').textContent=collapsed?'+':'−';});
+const settingsPanel=document.querySelector('.control-panel');
+const settingsToggle=document.querySelector('#panel-toggle');
+const settingsContent=document.querySelector('#panel-content');
+// Keep each layout's disclosure preference when rotating or resizing the window.
+const compactSettings=matchMedia('(max-width: 700px), (max-height: 560px)');
+const settingsOpen={compact:false,desktop:true};
+function setSettingsOpen(open,{restoreFocus=false}={}){
+ const mode=compactSettings.matches?'compact':'desktop';
+ settingsOpen[mode]=open;
+ if(!open&&(restoreFocus||settingsContent.contains(document.activeElement)))settingsToggle.focus({preventScroll:true});
+ settingsPanel.classList.toggle('collapsed',!open);
+ settingsContent.hidden=!open;
+ settingsToggle.setAttribute('aria-expanded',String(open));
+ document.querySelector('#panel-icon').textContent=open?'−':'+';
+}
+settingsToggle.addEventListener('click',()=>setSettingsOpen(settingsToggle.getAttribute('aria-expanded')!=='true'));
+compactSettings.addEventListener('change',()=>setSettingsOpen(settingsOpen[compactSettings.matches?'compact':'desktop']));
+document.addEventListener('pointerdown',event=>{
+ if(compactSettings.matches&&!settingsPanel.contains(event.target))setSettingsOpen(false);
+});
+setSettingsOpen(settingsOpen[compactSettings.matches?'compact':'desktop']);
 const help=document.querySelector('#help');document.querySelector('#info-toggle').addEventListener('click',()=>help.showModal());help.addEventListener('click',e=>{if(e.target===help)help.close();});
 document.querySelector('#brand').addEventListener('click',e=>{e.preventDefault();Object.assign(state,presets.clear);simTime=0;setView('cinematic',{immediate:true,notify:false});autoTour=true;introDismissed=false;document.querySelector('#intro').classList.remove('dismissed');syncUI('clear');});
 canvas.addEventListener('pointerdown',e=>{canvas.focus({preventScroll:true});drag={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,id:e.pointerId};canvas.setPointerCapture(e.pointerId);});
@@ -147,6 +167,9 @@ canvas.addEventListener('pointerup',e=>{if(drag&&Math.hypot(e.clientX-drag.start
 canvas.addEventListener('pointercancel',()=>{drag=null;});
 canvas.addEventListener('wheel',e=>{if(state.view==='free'){e.preventDefault();flightSpeed=THREE.MathUtils.clamp(flightSpeed*Math.exp(-e.deltaY*.001),2,120);if(performance.now()-lastToast>600)toast(`Flight speed ${Math.round(flightSpeed)} m/s`,1100);}},{passive:false});
 addEventListener('keydown',e=>{
+ if(e.code==='Escape'&&!help.open&&(compactSettings.matches||settingsPanel.contains(document.activeElement))&&settingsToggle.getAttribute('aria-expanded')==='true'){
+  e.preventDefault();setSettingsOpen(false,{restoreFocus:true});return;
+ }
  const input=/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'');if(input||help.open)return;
  if(e.code==='Space'&&/^(BUTTON|A)$/.test(document.activeElement?.tagName||''))return;
  if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();keys.add(e.code);

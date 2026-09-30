@@ -11,7 +11,7 @@ An open ocean you can explore in your browser: long swells, changing weather, a 
 ## Explore in a minute
 
 1. Watch the slow opening tour, or choose **Sail** to follow the yacht.
-2. Move **Sea state** from glassy calm to storm. Try **Dusk**, **Night**, and **Storm**.
+2. Open **Settings**, then move **Sea state** from glassy calm to storm. Try **Dusk**, **Night**, and **Storm**.
 3. Choose **Below** for fish and underwater light. Choose **Fly**, drag to look, and use **WASD** to move.
 
 | Control | What it does |
@@ -21,9 +21,11 @@ An open ocean you can explore in your browser: long swells, changing weather, a 
 | Drag · mouse wheel | Look around · adjust flying speed |
 | F · Esc · Space · H | Fly · return to Drift · pause · keyboard guide |
 | Click water | Add a small, fading surface ripple |
-| Conditions heading · speaker · logo | Collapse controls · enable sound · reset scene |
+| Settings · speaker · logo | Open/close controls · enable sound · reset scene |
 
-The opening tour hands off to free flight after about 72 seconds. Sound starts only after a click. Touch layouts fit small screens, but phone GPU performance and a complete touch flight control scheme are not validated; keyboard flight is best on desktop. Storm mode includes lightning flashes.
+On phones and short windows, **Settings** starts collapsed. Tap it to open the controls; tap again, tap outside, or press **Esc** to close. The panel scrolls on short screens, keeps its heading visible, and preserves your conditions when closed. Desktop controls start expanded. Mobile Settings targets are at least 44 CSS pixels.
+
+The opening tour hands off to free flight after about 72 seconds. Sound starts only after a click. [Mobile control checks](docs/CONTROLS.md) use desktop-browser viewport and touch emulation; physical-phone performance and a complete touch flight control scheme are not validated. Keyboard flight is best on desktop. Storm mode includes lightning flashes.
 
 ## Learn how the illusion works
 

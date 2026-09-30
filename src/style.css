@@ -4,3 +4,68 @@
 
 @media(max-height:560px) and (min-width:601px){.identity{top:20px}.top-right{top:12px}.control-panel{top:66px;width:218px;max-height:calc(100vh - 165px);overflow-y:auto;scrollbar-width:thin}.panel-heading{padding:12px 16px}.intro{top:26%;left:35px}.intro h1{font-size:38px}.intro p{display:none}.intro .eyebrow{margin-bottom:12px}.view-controls{bottom:47px}footer{bottom:15px}}
 @media(max-width:600px){.status .divider:nth-last-child(2){display:none}}
+
+/* Settings is a non-modal disclosure: the ocean and view buttons stay usable. */
+.panel-heading { text-transform: uppercase; }
+.control-panel :focus-visible { outline-offset: -3px; }
+
+@media (max-width: 700px), (max-height: 560px) {
+  .control-panel {
+    top: calc(70px + env(safe-area-inset-top, 0px));
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    width: min(280px, calc(100vw - 24px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+    max-height: min(386px, 55vh, calc(100vh - var(--settings-clearance, 203px) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)));
+    max-height: min(386px, 55dvh, calc(100dvh - var(--settings-clearance, 203px) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(12, 25, 34, .86);
+  }
+  .control-panel.collapsed { width: 116px; }
+  .panel-heading {
+    min-height: 44px;
+    flex-shrink: 0;
+    padding: 0 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+  .control-panel:not(.collapsed) .panel-heading { border-bottom: 1px solid var(--line); }
+  .panel-heading span:last-child { font-size: 18px; opacity: .8; }
+  #panel-content {
+    min-height: 0;
+    padding: 12px 14px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff50 transparent;
+    touch-action: pan-y;
+  }
+  #panel-content :is(button, input) { scroll-margin-block: 8px; }
+  .presets { margin-bottom: 12px; }
+  .presets button { min-height: 44px; padding: 0 3px; font-size: 11px; }
+  .slider-label { font-size: 12px; }
+  .slider-label output { font-size: 11px; }
+  input[type=range] { height: 44px; margin: 0 0 4px; touch-action: pan-y; }
+  input[type=range]::-webkit-slider-thumb { width: 16px; height: 16px; margin-top: -7.5px; }
+  input[type=range]::-moz-range-thumb { width: 16px; height: 16px; }
+  .toggle-row { padding-top: 6px; gap: 6px; font-size: 12px; }
+  .switch { position: relative; width: 44px; height: 44px; padding: 0 8px; border: 0; background: none; }
+  .switch::before { content: ''; position: absolute; width: 28px; height: 16px; left: 8px; top: 14px; border: 1px solid #ffffff60; border-radius: 9px; }
+  .switch[aria-checked=true] { background: none; }
+  .switch[aria-checked=true]::before { background: #ffffff20; }
+  .switch span { width: 10px; height: 10px; margin-left: 3px; position: relative; }
+  .switch[aria-checked=true] span { transform: translateX(12px); }
+  .identity { top: calc(28px + env(safe-area-inset-top, 0px)); left: calc(20px + env(safe-area-inset-left, 0px)); }
+  .top-right { top: calc(14px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px)); gap: 4px; }
+  .top-right > #live-label, .top-right > .live-dot { display: none; }
+  .icon-button { width: 44px; height: 44px; margin-left: 0; }
+  .view-controls { bottom: calc(67px + env(safe-area-inset-bottom, 0px)); }
+  .view-controls button { min-height: 44px; }
+  footer { bottom: calc(22px + env(safe-area-inset-bottom, 0px)); left: calc(20px + env(safe-area-inset-left, 0px)); right: calc(20px + env(safe-area-inset-right, 0px)); }
+}
+@media (max-height: 560px) and (min-width: 601px) {
+  .control-panel { --settings-clearance: 183px; }
+  .view-controls { bottom: calc(47px + env(safe-area-inset-bottom, 0px)); }
+  footer { bottom: calc(15px + env(safe-area-inset-bottom, 0px)); }
+}
