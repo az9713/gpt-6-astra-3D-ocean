@@ -45,7 +45,20 @@ oceanQA.step(0.1); // bounded even if a larger value is requested
 oceanQA.diagnostics();
 ```
 
-The local interaction summary and sanitized sustained sample are in `docs/local-evidence.json`. They contain selected structured measurements rather than raw tool output. Deployment verification is recorded in `docs/deployment-verification.json`, with the tested build SHA. Later documentation-only commits may have a different SHA. Actual published-page screenshots are in `docs/screenshots/`.
+The local interaction summary and sanitized sustained sample are in `docs/local-evidence.json`. They contain selected structured measurements rather than raw tool output. Actual published-page screenshots are in `docs/screenshots/`.
+
+## Publication evidence and exact revisions
+
+[`deployment-verification.json`](deployment-verification.json) preserves both saved browser results, including their original timestamps, individual checks, asset URLs, and actual tested revisions.
+
+| Saved browser run | UTC timestamp | Tested revision | Result |
+| --- | --- | --- | --- |
+| Initial public deployment | 2026-09-30T15:53:39.21Z | `000eb0004d9a6e821a53d5e721d2ce23ecd1ee9c` | 16 passed, 0 failed |
+| Final publication browser run | 2026-09-30T16:55:09.555Z | `cdc79f8790e54bdc525202c7a5cf0b9ec3e3da4b` | 17 passed, 0 failed |
+
+The final run adds the corrected article screenshot-link check. It used the deployed Vite 7.3.5 build and recorded the `index-ByEaCVBL.js` and `three-C0Kx9dIa.js` assets. Both runs reported no browser errors or failed requests.
+
+Commit `775fbd48136b00893a8ea4f92dea3eeaf430b66f` subsequently preserved the original `README.txt` line endings. Its diff from the final tested revision changes only that prompt file. Its Pages workflow succeeded, and later HTTP checks confirmed the game and journey returned 200, but the 17-check browser suite was **not rerun against that exact commit**. Likewise, a later evidence-only commit does not become the tested revision merely because it stores these results. Workflow success, HTTP checks, and browser interaction checks are separate evidence.
 
 ## Known gaps
 

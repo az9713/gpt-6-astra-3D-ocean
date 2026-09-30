@@ -232,6 +232,8 @@ The repository uses relative Vite asset paths so the same build works below `/gp
 
 The first public deployment passed 16 browser checks against the actual Pages URLs. Both pages returned HTTP 200. Storm, Below, Night, and free flight responded; scripts and styles loaded under the repository subpath; the article's slider and animation button worked; its images loaded; its 390-pixel layout had no document overflow; and Play returned to the game. No browser errors or failed assets were recorded. Actual deployed game, article, lesson, and mobile screenshots were inspected. The tested revision is recorded with the verification evidence.
 
+The final saved browser run passed **17 checks** at `2026-09-30T16:55:09.555Z`, adding the corrected screenshot-link check. It tested revision `cdc79f8`, after the Vite update. The subsequent `775fbd4` commit changed only the original prompt's line endings; it was deployed and HTTP-checked, but was not itself the target of that 17-check run. The [verification record](https://github.com/az9713/gpt-6-astra-3D-ocean/blob/main/docs/deployment-verification.json) retains both results and their full tested revision identifiers. An evidence-documentation commit must not silently relabel an earlier test as a new one.
+
 The [Vite deployment guide](https://vite.dev/guide/static-deploy.html#github-pages) documents why a repository site needs appropriate asset bases. The project uses a relative base to support both local and repository subpath hosting. No security settings or browser cross-origin protections were disabled.
 
 ## 8. Where things stand — a playable lesson, with visible limits

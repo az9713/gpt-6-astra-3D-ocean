@@ -1,95 +1,209 @@
 {
-  "checkedAt": "2026-09-30T15:53:39.21Z",
-  "root": "https://az9713.github.io/gpt-6-astra-3D-ocean/",
-  "passed": 16,
-  "failed": [],
-  "checks": [
-    {
-      "name": "Live game returns HTTP 200",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "WebGL2 initialized with finite state",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Storm click changes sea, rain and clouds",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Below enters underwater",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Night preset updates lighting time",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Free flight moves",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Game assets load from the repository subpath",
-      "passed": true,
-      "detail": [
-        "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/index-DMdgVMom.js",
-        "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/three-Db-iO6Rg.js",
-        "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/index-DBt06V41.css"
-      ]
-    },
-    {
-      "name": "Live journey returns HTTP 200",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Journey has eight numbered sections",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Interactive wave lesson responds",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Wave lesson animation toggles",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Journey screenshots loaded",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Mobile journey has no document overflow",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "Journey Play link opens the game",
-      "passed": true,
-      "detail": null
-    },
-    {
-      "name": "No browser errors",
-      "passed": true,
-      "detail": []
-    },
-    {
-      "name": "No failed assets or HTTP errors",
-      "passed": true,
-      "detail": []
-    }
-  ],
-  "errors": [],
-  "failedRequests": [],
-  "testedCommit": "000eb0004d9a6e821a53d5e721d2ce23ecd1ee9c"
+  "schemaVersion": 2,
+  "scope": "Historical saved browser runs. Later commits recording evidence do not change the revision tested by each run.",
+  "initialPublication": {
+    "checkedAt": "2026-09-30T15:53:39.21Z",
+    "root": "https://az9713.github.io/gpt-6-astra-3D-ocean/",
+    "passed": 16,
+    "failed": [],
+    "checks": [
+      {
+        "name": "Live game returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "WebGL2 initialized with finite state",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Storm click changes sea, rain and clouds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Below enters underwater",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Night preset updates lighting time",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Free flight moves",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Game assets load from the repository subpath",
+        "passed": true,
+        "detail": [
+          "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/index-DMdgVMom.js",
+          "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/three-Db-iO6Rg.js",
+          "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/index-DBt06V41.css"
+        ]
+      },
+      {
+        "name": "Live journey returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey has eight numbered sections",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Interactive wave lesson responds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Wave lesson animation toggles",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey screenshots loaded",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Mobile journey has no document overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey Play link opens the game",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No browser errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "No failed assets or HTTP errors",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "testedCommit": "000eb0004d9a6e821a53d5e721d2ce23ecd1ee9c"
+  },
+  "finalPublication": {
+    "checkedAt": "2026-09-30T16:55:09.555Z",
+    "root": "https://az9713.github.io/gpt-6-astra-3D-ocean/",
+    "passed": 17,
+    "failed": [],
+    "checks": [
+      {
+        "name": "Live game returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "WebGL2 initialized with finite state",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Storm click changes sea, rain and clouds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Below enters underwater",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Night preset updates lighting time",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Free flight moves",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Game assets load from the repository subpath",
+        "passed": true,
+        "detail": [
+          "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/index-ByEaCVBL.js",
+          "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/three-C0Kx9dIa.js",
+          "https://az9713.github.io/gpt-6-astra-3D-ocean/assets/index-DBt06V41.css"
+        ]
+      },
+      {
+        "name": "Live journey returns HTTP 200",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey has eight numbered sections",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey final-render link loads an image",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Interactive wave lesson responds",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Wave lesson animation toggles",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey screenshots loaded",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Mobile journey has no document overflow",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Journey Play link opens the game",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "No browser errors",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "No failed assets or HTTP errors",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "errors": [],
+    "failedRequests": [],
+    "testedCommit": "cdc79f8790e54bdc525202c7a5cf0b9ec3e3da4b",
+    "deploymentWorkflowUrl": "https://github.com/az9713/gpt-6-astra-3D-ocean/actions/runs/36747488681"
+  },
+  "subsequentPromptOnlyCommit": {
+    "commit": "775fbd48136b00893a8ea4f92dea3eeaf430b66f",
+    "changedFiles": [
+      "README.txt"
+    ],
+    "change": "Preserved the original prompt line endings; no app, build, or journey changes.",
+    "verification": "Pages workflow succeeded and game/journey HTTP checks returned 200. The 17-check browser suite was not rerun against this exact commit.",
+    "deploymentWorkflowUrl": "https://github.com/az9713/gpt-6-astra-3D-ocean/actions/runs/36747859586"
+  }
 }
