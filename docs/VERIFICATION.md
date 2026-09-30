@@ -45,7 +45,7 @@ oceanQA.step(0.1); // bounded even if a larger value is requested
 oceanQA.diagnostics();
 ```
 
-The local interaction summary and sanitized sustained sample are in `docs/local-evidence.json`. They contain selected structured measurements rather than raw tool output. Deployment verification will be recorded in `docs/deployment-verification.json` after the first live check, with the tested build SHA. Later documentation-only commits may have a different SHA.
+The local interaction summary and sanitized sustained sample are in `docs/local-evidence.json`. They contain selected structured measurements rather than raw tool output. Deployment verification is recorded in `docs/deployment-verification.json`, with the tested build SHA. Later documentation-only commits may have a different SHA. Actual published-page screenshots are in `docs/screenshots/`.
 
 ## Known gaps
 

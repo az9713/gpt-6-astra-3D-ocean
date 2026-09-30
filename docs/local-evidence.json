@@ -250,13 +250,14 @@
     "measuredAt": "2026-09-30T11:44:24.386Z",
     "mode": "Storm, cinematic camera, yacht visible, rain and natural lightning active",
     "environment": {
-      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "browser": "Headless Chrome 154",
+      "platform": "Windows",
+      "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU / ANGLE Direct3D11",
       "viewport": [
         1600,
         1000
       ],
-      "devicePixelRatio": 1,
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 Laptop GPU (0x000025A2) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      "devicePixelRatio": 1
     },
     "cadence": {
       "durationMs": 45005.899999999965,

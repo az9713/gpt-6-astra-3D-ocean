@@ -9,7 +9,7 @@ html = html.replace(/<h2>(.*?)<\/h2>/g, (_, title) => {
   const id = `section-${headings.length + 1}`;
   headings.push({ id, title });
   return `<h2 id="${id}">${title}</h2>`;
-}).replaceAll('src="public/media/', 'src="../media/');
+}).replaceAll('src="public/media/', 'src="../media/').replaceAll('href="public/media/', 'href="../media/');
 html = html.replace(/<img /g, '<img loading="lazy" decoding="async" ');
 const lab = `<section class="wave-lab" aria-labelledby="lab-title">
 <div class="eyebrow">TRY THE IDEA</div><h3 id="lab-title">One ocean. Several scales of motion.</h3>

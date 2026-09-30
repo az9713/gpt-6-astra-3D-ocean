@@ -31,6 +31,8 @@ async (page) => {
   const journeyResponse = await page.goto(root + 'journey/');
   check('Live journey returns HTTP 200', journeyResponse.status()===200);
   check('Journey has eight numbered sections', await page.locator('article h2').count()===8);
+  const renderLink = await page.getByRole('link',{name:'Open sea screenshot',exact:true}).getAttribute('href');
+  check('Journey final-render link loads an image', await page.evaluate(async href => { const r=await fetch(href);return r.ok&&r.headers.get('content-type')?.includes('image/png'); },renderLink));
   await page.locator('#lesson-sea').fill('0.9');
   check('Interactive wave lesson responds', await page.locator('#lesson-value').textContent()==='90%');
   await page.getByRole('button',{name:'Animate the waves',exact:true}).click();

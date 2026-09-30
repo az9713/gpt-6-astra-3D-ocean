@@ -181,6 +181,8 @@ During publication, an attempted patch that deleted and added the same README in
 
 A first preview navigation returned `net::ERR_CONNECTION_REFUSED`; a process launch had been mistaken for a ready server. The check was changed to probe HTTP readiness. The Playwright CLI sandbox also raised `ReferenceError: URL is not defined` for a helper available in many other JavaScript environments; simple path joining removed that assumption. Finally, putting a nested HTML page under the static public folder let the development server fall back to the ocean app instead of the article. Registering the journey as a real second Vite HTML entry made development and production routing agree.
 
+The initial publication smoke test found a missing article favicon and sampled the underwater camera transition too early. An explicit favicon and waiting for the actual underwater state corrected those checks. Visual inspection then exposed a relative screenshot hyperlink that needed the same path rewrite as inline images. The release checklist now exercises that link too. A whitespace check flagged intentional Markdown line breaks and inherited license formatting; those were reviewed rather than rewriting the original prompt.
+
 ### 6.9 Unknown unknowns worth watching
 
 | Surprise | Why it happens | Mitigation here and the remaining gap |
@@ -225,6 +227,8 @@ The slowest one-second interval is **not** a statistical “1% low.” Cadence i
 ### Publication checks
 
 The repository uses relative Vite asset paths so the same build works below `/gpt-6-astra-3D-ocean/`. GitHub Actions installs the exact lockfile, regenerates the journey, builds Vite output, and deploys that artifact to Pages. The live game and journey must be checked after deployment: a green workflow is evidence of a deployed artifact, not proof of correct links, shader rendering, or input behavior. Publication findings are recorded in [the verification guide](https://github.com/az9713/gpt-6-astra-3D-ocean/blob/main/docs/VERIFICATION.md).
+
+The first public deployment passed 16 browser checks against the actual Pages URLs. Both pages returned HTTP 200. Storm, Below, Night, and free flight responded; scripts and styles loaded under the repository subpath; the article's slider and animation button worked; its images loaded; its 390-pixel layout had no document overflow; and Play returned to the game. No browser errors or failed assets were recorded. Actual deployed game, article, lesson, and mobile screenshots were inspected. The tested revision is recorded with the verification evidence.
 
 The [Vite deployment guide](https://vite.dev/guide/static-deploy.html#github-pages) documents why a repository site needs appropriate asset bases. The project uses a relative base to support both local and repository subpath hosting. No security settings or browser cross-origin protections were disabled.
 
